@@ -4,7 +4,7 @@
 
 **main.py** -> This module conatins the code for downloading the XML files from Web using "requests" library, parsing the same to get useful information using "xml" library and uploading the final results to s3 bucket using "boto3" library.
 
-Logging will be done in "app.log"
+Logging will be done in "app.log". The code has been developed and tested on python version 3.6
 
 The initial XML file will be saved as "Intermediate.XML" which will parsed for the web link of XML containg data. The zip downloaded will be saved as "Data.zip". The final results after parsing of XML data will be stored in "Info.csv". 
 
