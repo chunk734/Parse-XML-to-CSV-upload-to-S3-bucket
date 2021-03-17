@@ -30,9 +30,15 @@ BUCKET_NAME = ""
 **Usage** :
 
 python main.py           ==>      For Executing the whole module  
+
 pytest -v test.py        ==>      For running unit testcases on main.py module
+
 python -m pydoc main     ==>      Documentation for main.py module
+
 python -m pydoc test     ==>      Documentation for test.py module
+
+
+
 
 
 
