@@ -149,6 +149,11 @@ class HandleXML:
         # in memory may cause memory issues.
         # Writing 10000 records at a time to Info.csv due to avoid memoru issues
         try:
+            try:
+                os.remove("Info.csv")
+            except Exception:
+                pass
+            
             for (event, element) in ET.iterparse(inputFileName, events=('start'
                 , 'end')):
                 if event == 'end':
