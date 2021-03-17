@@ -1,8 +1,10 @@
 # Parse-XML-to-CSV-upload-to-S3-bucket
 
-**Description**
+**Description**:
 
 **main.py** -> This module conatins the code for downloading the XML files from Web using "requests" library, parsing the same to get useful information using "xml" library and uploading the final results to s3 bucket using "boto3" library.
+
+Logging will be done in "app.log"
 
 The initial XML file will be saved as "Intermediate.XML" which will parsed for the web link of XML containg data. The zip downloaded will be saved as "Data.zip". The final results after parsing of XML data will be stored in "Info.csv". 
 
@@ -23,6 +25,17 @@ REGION_NAME = ""
 BUCKET_NAME = ""
 
 #####################################
+
+
+**Usage** :
+
+python main.py           ==>      For Executing the whole module  
+pytest -v test.py        ==>      For running unit testcases on main.py module
+python -m pydoc main     ==>      Documentation for main.py module
+python -m pydoc test     ==>      Documentation for test.py module
+
+
+
 
 
 **Note2** - There are a few points which could have been handled in a better way like handling AWS credentials, arguements validation, etc. But keeping it simple for this assignment. Attached are the few succesful screenshots of the assignment.
