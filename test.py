@@ -44,7 +44,7 @@ def test_xml_handling():
     """
     return HandleXML()
 
-@pytest.mark.parametrize("url, file_name", [("https://registers.esma.europa.eu/solr/esma_registers_firds_files/select?q=*&fq=publication_date:%5B2021-01-17T00:00:00Z+TO+2021-01-19T23:59:59Z%5D&wt=xml&indent=true&start=0&rows=100","Intermediate.xml")])
+@pytest.mark.parametrize("url, file_name", [("https://registers.esma.europa.eu/solr/esma_registers_firds_files/select?q=*&fq=publication_date:%5B2021-01-17T00:00:00Z+TO+2021-01-19T23:59:59Z%5D&wt=xml&indent=true&start=0&rows=100","Test1.xml")])
 def test_url_download(test_connection, url, file_name):
     """
     This is a function for unit testing download functionality from given url
@@ -57,7 +57,7 @@ def test_url_download(test_connection, url, file_name):
     test_connection.get_file_from_web(url, file_name)
     assert os.stat(file_name).st_size > 0
 
-@pytest.mark.parametrize("file_name", [("Test.csv")])
+@pytest.mark.parametrize("file_name", [("Test2.csv")])
 def test_write_to_csv(test_write_to_disk, file_name):
     """
     This is a function for unit testing writing data to CSV
@@ -72,7 +72,7 @@ def test_write_to_csv(test_write_to_disk, file_name):
 
     assert os.stat(file_name).st_size > 0 and len(list(csv.reader(open(file_name)))) == len(data)
 
-@pytest.mark.parametrize("file_name, output_file_name", [("Data.zip","DLTINS_20210117_01of01.xml")])
+@pytest.mark.parametrize("file_name, output_file_name", [("Test3.zip","TestCheck.xml")])
 def test_zip_extraction(test_utility_functions, file_name, output_file_name):
     """
     This is a function for unit testing zip extraction functionality
@@ -85,7 +85,7 @@ def test_zip_extraction(test_utility_functions, file_name, output_file_name):
     test_utility_functions.unzip_file(file_name)
     assert os.stat(output_file_name).st_size > 0
 
-@pytest.mark.parametrize("file_name, link", [("Intermediate.xml", "http://firds.esma.europa.eu/firds/DLTINS_20210117_01of01.zip")])
+@pytest.mark.parametrize("file_name, link", [("Test4.xml", "http://firds.esma.europa.eu/firds/DLTINS_20210117_01of01.zip")])
 def test_get_first_link_with_file_type_DLTINS(test_xml_handling, file_name, link):
     """
     This is a function for unit testing getting first link with file type DLTINS from Intermediate XML file
@@ -94,7 +94,7 @@ def test_get_first_link_with_file_type_DLTINS(test_xml_handling, file_name, link
     assert test_xml_handling.get_first_link_from_xml(file_name) == link
 
 # This test case will fail if correct AWS credentials arer not provided in the script
-@pytest.mark.parametrize("file_name", [("Info.csv")])
+@pytest.mark.parametrize("file_name", [("Test5.csv")])
 def test_csv_s3_bucket_upload(test_connection, file_name):
     """
     This is a function for unit testing file upload to s3 bucket
